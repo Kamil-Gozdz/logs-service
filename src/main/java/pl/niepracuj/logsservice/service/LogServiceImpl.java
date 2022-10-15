@@ -8,7 +8,6 @@ import pl.niepracuj.logsservice.model.mapper.LogMapper;
 import pl.niepracuj.logsservice.repository.LogRepository;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -21,7 +20,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public LogDto saveLog(LogDto logDto) {
-        Log log = logMapper.toNewEntity(logDto);
-        return logMapper.toDto(logRepository.save(log));
+        Log log = logMapper.logDtoToLog(logDto);
+        return logMapper.logToDto(logRepository.save(log));
     }
 }
